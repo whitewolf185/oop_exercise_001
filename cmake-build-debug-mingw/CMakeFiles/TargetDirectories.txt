@@ -1,0 +1,3 @@
+D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/oop_exercise_01.dir
+D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
+D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir

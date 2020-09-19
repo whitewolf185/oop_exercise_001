@@ -1,0 +1,26 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_b99e0/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe  -f CMakeFiles\cmTC_b99e0.dir\build.make CMakeFiles/cmTC_b99e0.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/CMakeTmp'
+process_begin: CreateProcess(NULL, C:\Users\╨╝╨░╤В╨▓╨╡╨╣\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.6948.80\bin\cmake\win\bin\cmake.exe -E cmake_echo_color --switch= --progress-dir=D:\Projects\oop_exercise_01\cmake-build-debug-mingw\CMakeFiles\CMakeTmp\CMakeFiles --progress-num=1 "Building C object CMakeFiles/cmTC_b99e0.dir/testCCompiler.c.obj", ...) failed.
+make (e=2): ═х єфрхЄё  эрщЄш єърчрээ√щ Їрщы.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_b99e0.dir\build.make:84: CMakeFiles/cmTC_b99e0.dir/testCCompiler.c.obj] Error 2
+mingw32-make.exe[1]: Leaving directory 'D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:140: cmTC_b99e0/fast] Error 2
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_ed0bf/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ed0bf.dir\build.make CMakeFiles/cmTC_ed0bf.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/CMakeTmp'
+process_begin: CreateProcess(NULL, C:\Users\╨╝╨░╤В╨▓╨╡╨╣\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.6948.80\bin\cmake\win\bin\cmake.exe -E cmake_echo_color --switch= --progress-dir=D:\Projects\oop_exercise_01\cmake-build-debug-mingw\CMakeFiles\CMakeTmp\CMakeFiles --progress-num=1 "Building C object CMakeFiles/cmTC_ed0bf.dir/testCCompiler.c.obj", ...) failed.
+make (e=2): ═х єфрхЄё  эрщЄш єърчрээ√щ Їрщы.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_ed0bf.dir\build.make:84: CMakeFiles/cmTC_ed0bf.dir/testCCompiler.c.obj] Error 2
+mingw32-make.exe[1]: Leaving directory 'D:/Projects/oop_exercise_01/cmake-build-debug-mingw/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:140: cmTC_ed0bf/fast] Error 2
+
+
+

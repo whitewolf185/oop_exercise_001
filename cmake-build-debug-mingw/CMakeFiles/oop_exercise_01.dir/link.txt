@@ -1,0 +1,3 @@
+C:\Users\whitewolf\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.6948.80\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\oop_exercise_01.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\oop_exercise_01.dir/objects.a @CMakeFiles\oop_exercise_01.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\oop_exercise_01.dir/objects.a -Wl,--no-whole-archive  -o oop_exercise_01.exe -Wl,--out-implib,liboop_exercise_01.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\oop_exercise_01.dir\linklibs.rsp
