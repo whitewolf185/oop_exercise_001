@@ -76,7 +76,7 @@ private:
     }
 
     Time seconds_to_time(int tmp){
-        Time result;
+        Time result{};
         result.h = tmp/3600;
         result.m = (tmp%3600)/60;
         result.s = tmp%60;
