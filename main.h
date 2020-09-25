@@ -10,7 +10,7 @@ struct Time {
 };
 
 
-bool operator<(Time lhs, Time rhs){
+bool operator<(const Time &lhs, const Time &rhs){
     if(lhs.h != rhs.h){
         return lhs.h < rhs.h;
     }
@@ -21,17 +21,122 @@ bool operator<(Time lhs, Time rhs){
 }
 
 
-Time operator-(Time lhs, Time rhs){
-    Time result;
+Time operator-(const Time &lhs, const Time &rhs){
+    Time result{};
 
-    result.h = lhs.h - rhs.h;
-    result.m = lhs.m - rhs.m;
-    result.s = lhs.s - rhs.s;
+    if(lhs.h - rhs.h >= 0) {
+        result.h = lhs.h - rhs.h;
+    }
+    else {
+        result.h = 24 + lhs.h - rhs.h;
+    }
+
+
+    if(lhs.m - rhs.m >= 0) {
+        result.m = lhs.m - rhs.m;
+    }
+    else {
+        if(result.h > 0) {
+            result.h = result.h - 1;
+        }
+        else{
+            result.h = 24 - 1;
+        }
+
+        result.m = 60 + lhs.m - rhs.m;
+    }
+
+
+    if(lhs.s - rhs.s >= 0) {
+        result.s = lhs.s - rhs.s;
+    }
+    else {
+        if(result.h > 0) {
+            result.h = result.h - 1;
+        }
+        else{
+            result.h = 24 - 1;
+        }
+
+        if(result.m > 0) {
+            result.m = result.m - 1;
+        }
+        else{
+            result.m = 60 - 1;
+        }
+
+        result.s = 60 + lhs.s - rhs.s;
+    }
 
     return result;
 }
 
 
+
+Time operator=(const Time &tmp_time){
+    Time result{};
+
+    result.h = tmp_time.h;
+    result.m = tmp_time.m;
+    result.s = tmp_time.s;
+
+    return result;
+}
+
+
+
+Time operator+(const Time &lhs, const Time &rhs){
+    Time result{};
+
+    result.h = (lhs.h + rhs.h) % 24;
+
+    if(lhs.m + rhs.m >= 60){
+        result.h = (result.h + 1) % 24;
+        result.m = (lhs.m + rhs.m) % 60;
+    }
+    else {
+        result.m = lhs.m + rhs.m;
+    }
+
+
+    if(lhs.s + rhs.s >= 60){
+        if(result.m == 59){
+            result.h = (result.h + 1) % 24;
+            result.m = 0;
+            result.s = (lhs.s + rhs.s) % 60;
+        }
+        else{
+            result.m++;
+            result.s = (lhs.s + rhs.s) % 60;
+        }
+    }
+
+    else {
+        result.s = lhs.s + rhs.s;
+    }
+
+    return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------the beginning of class----------------------
 
 class TimePoint {
 private:
@@ -77,13 +182,33 @@ private:
 
     Time seconds_to_time(int tmp){
         Time result{};
-        result.h = tmp/3600;
+        result.h = (tmp/3600) % 24;
         result.m = (tmp%3600)/60;
         result.s = tmp%60;
 
         return result;
     }
 
+
+
+
+
+    Time minutes_to_time(int tmp){
+        Time result{};
+        result.h = (tmp / 60) % 24;
+        result.m = tmp % 60;
+        result.s = 0;
+
+        return result;
+    }
+
+    int time_to_minutes(){
+        return time.h*60 + time.m*60;
+    }
+
+    int time_to_minutes(Time time_tmp){
+        return time_tmp.h*60 + time_tmp.m*60;
+    }
 
 public:
     Time setTime_in_format(){
@@ -116,7 +241,7 @@ public:
 
     
 
-    void get_time_in_format(Time time_tmp){
+    void get_time_in_format(const Time &time_tmp) const {
         if (time_tmp.h >= 10 && time_tmp.m >= 10 && time_tmp.s >=10) {
             std::cout << "time is  " << time_tmp.h << ':' << time_tmp.m << ':' << time_tmp.s << std::endl;
         }
@@ -153,9 +278,101 @@ public:
         get_time_in_format(result);
     }
 
+    void show_difference(Time rhs){
+        Time lhs = time; //lhs здесь нужно,чтобы не менять значения в классе
+        if(lhs < rhs){
+            Time tmp;
+            lhs = tmp;
+            lhs = rhs;
+            rhs = tmp;
+        }
 
+        Time result = lhs - rhs;
+
+        get_time_in_format(result);
+    }
+
+
+    void sum_time_in_format(const Time &lhs, const Time &rhs){
+        Time result = lhs + rhs;
+
+        get_time_in_format(result);
+    }
+
+    void sum_time_in_format(const Time &rhs){
+        time = time + rhs;
+        get_time_in_format();
+    }
+
+    int sum_time_seconds(Time lhs, int &sec){
+        int result = time_to_seconds(lhs);
+        result += sec;
+
+        std::cout << "time in sec: " << result << std::endl;
+        return result;
+    }
+
+    int sum_time_seconds(int &sec){
+        int result = time_to_seconds(time);
+        result += sec;
+
+        std::cout << "time in sec: " << result << std::endl;
+
+        time = time + seconds_to_time(sec);
+
+        return result;
+    }
+
+
+
+
+
+    void sub_time_seconds(Time lhs, int &sec){
+        int result = time_to_seconds(lhs);
+        if(result < sec){
+            result += 60*60*24;
+        }
+        result -= sec;
+
+        get_time_in_format(seconds_to_time(result));
+    }
+
+    void sub_time_seconds(int &sec){
+        int result = time_to_seconds(time);
+        time = time - seconds_to_time(sec);
+
+        get_time_in_format();
+    }
+
+
+
+
+    void how_times(const Time &tmp_time){
+        int time_in_sec = time_to_seconds();
+        int tmptime_in_sec = time_to_seconds(tmp_time);
+
+        std::cout << time_in_sec/tmptime_in_sec << " times" << std::endl;
+    }
+
+
+
+
+    void show_time_in_minutes(){
+        std::cout << time_to_minutes() << std::endl;
+    }
+
+    void show_time_in_minutes(const Time &tmp){
+        std::cout << time_to_minutes(tmp) << std::endl;
+    }
+
+
+    void show_minutes_in_time(const int &min){
+        Time result = minutes_to_time(min);
+
+        get_time_in_format(result);
+    }
 
 };
 
-
+//---------------------the end of class---------------------------
 #endif //OOP_EXERCISE_01_MAIN_H
