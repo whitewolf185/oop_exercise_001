@@ -164,9 +164,15 @@ private:
                 if (x == 2)
                     time.s = time.s*10 + (i - '0');
             }
+
+
+            if(i < '0' || i> '9'){
+                std::cout << "Wrong time format";
+                exit (1);
+            }
         }
 
-        if(x == 4 || time.h>23 || time.m >=60 || time.s >=60 || (time.h<0 && time.m<0 && time.s<0) ) {
+        if(x == 4 || time.h>23 || time.m >=60 || time.s >=60 || (time.h<0 && time.m<0 && time.s<0) || x == 0) {
             std::cout << "Wrong time format";
             exit (1);
         }
