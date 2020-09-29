@@ -142,6 +142,7 @@ Time operator+(const Time &lhs, const Time &rhs){
 //----------------------the beginning of class----------------------
 
 class TimePoint {
+    //---------private----------
 private:
     Time time{0,0,0};
 
@@ -160,7 +161,7 @@ private:
                 if (x == 1)
                     time.m = time.m*10 + (i - '0');
 
-                if(x == 2)
+                if (x == 2)
                     time.s = time.s*10 + (i - '0');
             }
         }
@@ -213,6 +214,8 @@ private:
         return time_tmp.h*60 + time_tmp.m*60;
     }
 
+
+    //---------public-----------
 public:
     Time setTime_in_format(){
         std::string a;
@@ -286,7 +289,7 @@ public:
     void show_difference(Time rhs){
         Time lhs = time; //lhs здесь нужно,чтобы не менять значения в классе
         if(lhs < rhs){
-            Time tmp;
+            Time tmp{};
             tmp = lhs;
             lhs = rhs;
             rhs = tmp;
@@ -356,7 +359,14 @@ public:
         int time_in_sec = time_to_seconds();
         int tmptime_in_sec = time_to_seconds(tmp_time);
 
-        std::cout << time_in_sec/tmptime_in_sec << " times" << std::endl;
+        if(tmptime_in_sec == 0){
+            std::cout << "WARNING: division by zero\n"
+                         "PROPOSAL: check your time entering" << std::endl;
+
+            exit(1);
+        }
+
+        std::cout << "about " << time_in_sec/tmptime_in_sec << " times" << std::endl;
     }
 
 
@@ -375,6 +385,20 @@ public:
         Time result = minutes_to_time(min);
 
         show_time_in_format(result);
+    }
+
+
+
+    void show_seconds_in_time(const int &sec){
+        show_time_in_format(seconds_to_time(sec));
+    }
+
+    void show_time_in_seconds(){
+        std::cout << time_to_seconds() << std::endl;
+    }
+
+    void show_time_in_seconds(Time tmp_time){
+        std::cout << time_to_seconds(tmp_time) << std::endl;
     }
 
 };
