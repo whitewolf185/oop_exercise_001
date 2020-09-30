@@ -340,6 +340,19 @@ public:
 
 
 
+    void sub_time_in_format(const Time &lhs, const Time &rhs){
+        Time result{};
+        result = lhs - rhs;
+        show_time_in_format(result);
+    }
+
+    void sub_time_in_format(const Time &lhs){
+        time = time - lhs;
+        show_time_in_format();
+    }
+
+
+
 
     void sub_time_seconds(Time lhs, int &sec){
         int result = time_to_seconds(lhs);
@@ -351,8 +364,7 @@ public:
         show_time_in_format(seconds_to_time(result));
     }
 
-    void sub_time_seconds(int &sec){
-        int result = time_to_seconds(time);
+    void sub_time_seconds(const int &sec){
         time = time - seconds_to_time(sec);
 
         show_time_in_format();
@@ -379,11 +391,11 @@ public:
 
 
     void show_time_in_minutes(){
-        std::cout << time_to_minutes() << std::endl;
+        std::cout << "time in minutes " << time_to_minutes() << std::endl;
     }
 
     void show_time_in_minutes(const Time &tmp){
-        std::cout << time_to_minutes(tmp) << std::endl;
+        std::cout << "time in minutes " << time_to_minutes(tmp) << std::endl;
     }
 
 
@@ -400,11 +412,11 @@ public:
     }
 
     void show_time_in_seconds(){
-        std::cout << time_to_seconds() << std::endl;
+        std::cout << "time in seconds " << time_to_seconds() << std::endl;
     }
 
     void show_time_in_seconds(Time tmp_time){
-        std::cout << time_to_seconds(tmp_time) << std::endl;
+        std::cout << "time in seconds " << time_to_seconds(tmp_time) << std::endl;
     }
 
 };
