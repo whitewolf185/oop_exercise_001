@@ -149,10 +149,13 @@ private:
 
 
     Time convert_to_time(const std::string& a){
+        time = {0,0,0};
         int x = 0;
         for (auto i : a) {
-            if(i == ':')
+            if(i == ':') {
                 x++;
+                continue;
+            }
 
             if(i >= '0' && i<= '9'){
                 if(x == 0)
@@ -172,7 +175,7 @@ private:
             }
         }
 
-        if(x == 4 || time.h>23 || time.m >=60 || time.s >=60 || (time.h<0 && time.m<0 && time.s<0) || x == 0) {
+        if(x >= 3 || time.h>23 || time.m >=60 || time.s >=60 || (time.h<0 && time.m<0 && time.s<0) || x == 0) {
             std::cout << "Wrong time format";
             exit (1);
         }
@@ -384,8 +387,8 @@ public:
 
 
     void how_times(const Time &tmp_time){
-        int time_in_sec = time_to_seconds();
-        int tmptime_in_sec = time_to_seconds(tmp_time);
+        float time_in_sec = time_to_seconds();
+        float tmptime_in_sec = time_to_seconds(tmp_time);
 
         if(tmptime_in_sec == 0){
             std::cout << "WARNING: division by zero\n"

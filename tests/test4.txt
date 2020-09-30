@@ -1,0 +1,5 @@
+Enter your time for show difference
+00:45:12
+F:12:t
+Wrong time format
+Process finished with exit code 1

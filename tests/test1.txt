@@ -1,0 +1,46 @@
+Enter your time for show difference
+12:45:00
+12:34:08
+time is  00:10:52
+
+Enter time for sum
+12:00:34
+12:34:23
+time is  00:34:57
+
+Enter time for sum in sec. The First one is time.
+The second one is seconds
+12:34:59
+2
+time in sec: 45301
+time is  12:35:01
+
+Enter time for sub in sec. The First one is time.
+The second one is seconds
+12:00:00
+1
+time is  11:59:59
+
+Enter time for how times bigger (smaller)
+12:45:00
+00:34:01
+about 22 times
+
+Enter time for show subtraction
+12:30:58
+14:23:45
+time is  22:07:13
+
+Enter time for convert in seconds and minutes
+23:45:12
+10:33:11
+time in minutes 4080
+time in seconds 37991
+
+Enter sec and minutes for convert in time
+234
+45
+time is  00:03:54
+time is  00:45:00
+
+Process finished with exit code 0

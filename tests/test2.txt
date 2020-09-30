@@ -1,0 +1,30 @@
+Enter your time for show difference
+00:00:00
+23:59:59
+time is  23:59:59
+
+Enter time for sum
+23:58:58
+00:00:02
+time is  23:59:00
+
+Enter time for sum in sec. The First one is time.
+The second one is seconds
+23:59:59
+1234
+time in sec: 87633
+time is  00:20:33
+
+Enter time for sub in sec. The First one is time.
+The second one is seconds
+00:00:00
+0
+time is  00:00:00
+
+Enter time for how times bigger (smaller)
+23:23:43
+00:00:00
+WARNING: division by zero
+PROPOSAL: check your time entering
+
+Process finished with exit code 1
