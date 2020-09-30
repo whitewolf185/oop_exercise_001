@@ -212,12 +212,22 @@ private:
         return result;
     }
 
-    int time_to_minutes(){
-        return time.h*60 + time.m*60;
+    int time_to_minutes() {
+        int result;
+        result = time.h * 60 + time.m * 60;
+        if (time.s >= 30) {
+            result++;
+        }
+        return result;
     }
 
     int time_to_minutes(Time time_tmp){
-        return time_tmp.h*60 + time_tmp.m*60;
+        int result;
+        result = time_tmp.h*60 + time_tmp.m*60;
+        if (time_tmp.s >=30){
+            result++;
+        }
+        return result;
     }
 
 
